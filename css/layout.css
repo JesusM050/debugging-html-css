@@ -23,15 +23,16 @@ aside {
   width: 20vw;
   height: auto;
   float: right;
-
-  dt {
-    font-weight: bold;
-  }
-
-  dd {
-    padding: 0 10px;
-  }
 }
+
+aside dt {
+  font-weight: bold;
+}
+
+aside dd {
+  padding: 0 10px;
+}
+
 
 footer {
   padding: 1vw;
