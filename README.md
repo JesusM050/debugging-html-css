@@ -7,7 +7,8 @@
 
 - img tag in the header was missing alt, fixed added alt txt
   An img element must have an alt attribute, except under certain conditions.
-  <img src="./images/easter-bunny-150-profile.png" alt="Easter bunny">
+
+[//]: # (  <img src="./images/easter-bunny-150-profile.png" alt="Easter bunny">)
 
 - a p tag was place inside a heading element, closed the h3 before the p tag
   Element p not allowed as child of element h3 in this context.
