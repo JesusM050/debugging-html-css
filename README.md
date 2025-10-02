@@ -1,100 +1,111 @@
 # Debugging Assignment Files
 
-Welcome to the Debugging Assignment repository! This repository contains the resources for the debugging assignment in the Web Design Tools course. Students will debug the provided HTML and CSS files to meet W3C standards and accessibility guidelines.
+## HTML
 
-## Files Included
+- **Empty meta tag with no attribute** — fixed by adding a `charset`.
 
-1. **index.html**
-   - Contains intentional errors for students to identify and fix.
-   - Errors include issues with HTML syntax, structure, accessibility, and semantic correctness.
+Element meta is missing one or more of the following attributes: charset, content, http-equiv, itemprop, name.
+ ```html
+ <!-- <meta charset="utf-8"> -->
+ ```
 
-2. **style.css**
-   - Includes intentional errors related to CSS syntax, selectors, and properties.
+- **`img` tag in the header was missing alt** — fixed by adding alt text.  
+  An img element must have an alt attribute, except under certain conditions.
+ ```html
+ <!-- <img src="./images/easter-bunny-150-profile.png" alt="Easter bunny"> -->
+ ```
 
-3. **Expected Site Design**
-   - Includes a screenshot of the error-free page (`images/expected-site-design.png`) to serve as a reference for students.
+- **A `p` tag was placed inside a heading element** — closed the `h3` before the `p` tag.  
+  Element `p` not allowed as child of element `h3` in this context.
+ ```html
+ <!-- <h3>Enough Content</h3> -->
+ <!-- <p>You need enough content …</p> -->
+ ```
 
-### File Structure
-```
-debugging-html-css/
-├── css/
-│   ├── style.css
-│   ├── layout.css
-├── images/
-│   ├── easter-bunny-150-profile.png
-│   ├── expected-site-design.png
-├── index.html
-├── README.md
-```
+- **In the `article` tag some elements were open** — corrected the tag order and closed all the tags.  
+  Error: End tag `article` seen, but there were open elements.
+ ```html
+ <!-- <article> -->
+ <!--   ... -->
+ <!-- </article> -->
+ ```
 
-## Objective
+- **Multiple `<br>` tags** — fixed by removing the extra `<br>` tags.
+ ```html
+ <!-- <br> -->
+ ```
 
-The goal of this assignment is to:
-- Develop debugging skills by identifying and correcting errors in HTML and CSS.
-- Improve familiarity with W3C standards and accessibility best practices.
-- Practice using debugging tools and validators to ensure standards-compliant code.
-- Learn to document errors and resolutions in a structured manner.
+- **Duplicate `@import`** — fixed by removing and only keeping one instance.  
+  Removed the duplicate Google Fonts `@import` line.
+ ```css
+ /* @import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Love+Ya+Like+A+Sister&display=swap'); */
+ ```
 
-## Instructions
+- **`body` tag missing** — fixed by adding the closing body tag.
+ ```html
+ <!-- </body> -->
+ <!-- </html> -->
+ ```
 
-1. **Clone this repository** to your local machine:
-   ```bash
-   git clone <repository-url>
-   ```
+- **Fixed the hierarchy for the heading (`h`) tags**.
 
-2. Open the `index.html` and `style.css` files in your favorite text editor or IDE (e.g., Visual Studio Code).
+- **Updated the asset path for `layout.css` and image**
+ ```html
+ <!-- <link rel="stylesheet" href="css/layout.css"> -->
+ ```
 
-3. Identify the errors in both files. Use tools like:
-   - [W3C HTML Validator](https://validator.w3.org/)
-   - [W3C CSS Validator](https://jigsaw.w3.org/css-validator/)
-   - [Wave Accessibility Checker](https://wave.webaim.org/)
 
-4. Resolve all identified errors in the `index.html` and `style.css` files by:
-   - Commenting out the original error code.
-   - Adding the corrected code directly below the commented-out error code.
+## CSS — style.css / layout.css
 
-5. Once all errors are corrected:
-   - Commit your changes and push them to your own GitHub repository.
-   - Deploy the corrected project to GitHub Pages.
+- **Removed duplicate stylesheet**
 
-6. Submit your GitHub repository link and GitHub Pages link as instructed in the course.
+- **Corrected the hex colors**
+ ```css
+ /* footer    Value Error : color #B2 is not a valid color 3 or 6 hexadecimals numbers : #B2 */
+ /* footer { color: #B2D732; } */
+ ```
 
-## Tools and Resources
+- **Fixed unit typo errors**
+ ```css
+ /* h1    Value Error : font-size Too many values or values are not recognized : 5 vw */
+ /* h1 { font-size: 5vw; } */
 
-- [W3C HTML Validator](https://validator.w3.org/)
-- [W3C CSS Validator](https://jigsaw.w3.org/css-validator/)
-- [Wave Accessibility Checker](https://wave.webaim.org/)
-- [MDN Web Docs](https://developer.mozilla.org/)
+ /* p  Value Error : line-height Unknown dimension 1.35me */
+ /* p { line-height: 1.35em; } */
+ ```
 
-## License
+- **Corrected the footer color**
+ ```css
+ /* .error    Value Error : color #FE27122 is not a valid color 3 or 6 hexadecimals numbers : #FE27122 */
+ /* footer { background-color: #FE2712; } */
+ ```
 
-This repository is for educational purposes only. All content is copyrighted by the course instructor and may not be distributed without permission.
+- **Fixed the text-decorator**
+ ```css
+ /* a:hover   Value Error : text-decoration all is not a text-decoration value : all */
+ /* a:hover { text-decoration: none; } */
+ ```
 
----
+- **Fixed nested selectors inside `aside`**
+ ```css
+ /* aside Parse Error dt { font-weight: bold; } dd { padding: 0 10px; } */
 
-Happy debugging!
+ /* aside {
+ /*   position: relative; */
+ /*   padding: 8px 16px; */
+ /*   margin: 0; */
+ /*   width: 20vw; */
+ /*   height: auto; */
+ /*   float: right; */
+ /* } */
 
-## Debugging fixed documentation
+ /* aside dt { font-weight: bold; } */
+ /* aside dd { padding: 0 10px; } */
+ ```
 
-### HTML
-- empty meta tag with no attribute, fixed added a charset
-- img tag in the header was missing alt, fixed added alt txt
-- a p tag was place inside a heading element, closed the h3 before the p tag
-- in the article tag some elements were open, fixed ,corrected the tag order and closed all the tags
-- multiple br tags, fixed by removing the extra br tags
-- duplicate @import, fixed by removing and only keeping one instance
-- missing html lang tag, fixed by added the lang attribute
-- body tag missing, fixed by adding the closign body tag
-- fixed the hierarchie for the h tags
-- updated the assest path for layout.css and image
-
-### css - style.css/ layout.css
-- remove duplicate stylesheet
-- corrected the hex colors
-- fixed unit typo errors
-- corrected text decorator
-- correct the footer color
-- keep the color consistent
-- fixed nested selectors inside aside
-- fixed boreder-box
-
+- **Fixed border-box**
+ ```css
+ /* *, *::before, *::after {
+ /*   box-sizing: border-box;
+ /* } */
+ ```
